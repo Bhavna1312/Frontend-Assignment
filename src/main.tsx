@@ -1,10 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import type { StorybookConfig } from "@storybook/react-vite";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+const config: StorybookConfig = {
+  stories: ["../src//.mdx", "../src//.stories.@(js|jsx|ts|tsx)"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+  ],
+  framework: {
+    name: "@storybook/react-vite",
+    options: {},
+  },
+};
+export default config;

@@ -1,25 +1,27 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import DataTable from "./DataTable";
+import InputField from "./InputField"; // adjust path if needed
 
-const meta: Meta<typeof DataTable> = {
-  title: "Components/DataTable",
-  component: DataTable,
+const meta: Meta<typeof InputField> = {
+  title: "Components/InputField",
+  component: InputField,
+  tags: ["autodocs"], // optional but recommended
 };
 export default meta;
 
-type Story = StoryObj<typeof DataTable>;
+type Story = StoryObj<typeof InputField>;
 
 export const Default: Story = {
   args: {
-    columns: [
-      { header: "Name", accessor: "name" },
-      { header: "Age", accessor: "age" },
-      { header: "Email", accessor: "email" },
-    ],
-    data: [
-      { name: "John Doe", age: 28, email: "john@example.com" },
-      { name: "Jane Smith", age: 34, email: "jane@example.com" },
-      { name: "Sam Green", age: 45, email: "sam@example.com" },
-    ],
+    label: "Name",
+    placeholder: "Enter your name",
+    helperText: "This is a helper text",
+  },
+};
+
+export const Error: Story = {
+  args: {
+    label: "Email",
+    invalid: true,
+    errorMessage: "Invalid email address",
   },
 };
