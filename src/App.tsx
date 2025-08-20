@@ -1,12 +1,23 @@
+
+import React from "react";
+
+const ThemeToggle: React.FC = () => {
+  return (
+    <button>
+      Toggle Theme
+    </button>
+  );
+};
+
+
 function App() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold text-blue-600">Hello Tailwind 👋</h1>
-      <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-        Test Button
-      </button>
+    <div className="p-6 bg-white dark:bg-gray-900 min-h-screen text-black dark:text-white">
+      <ThemeToggle />
+      <h1 className="text-2xl font-bold">Frontend Assignment</h1>
+      {/* Your other components */}
     </div>
-  )
+  );
 }
 
 export default App;

@@ -40,3 +40,8 @@ git clone <your-repo-url>
 cd frontend-assignment
 npm install
 ```
+
+## Deployment Links
+
+\*\*Storybook (Chromatic):
+https://68a61526433f65ca5e31b5a2-pnfmttgunm.chromatic.com/
