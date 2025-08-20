@@ -1,27 +1,29 @@
 # Frontend Assignment – React Components
 
-## 📌 Overview
+## Overview
 
-This project contains two reusable React components built with **React, TypeScript, TailwindCSS, and Storybook**.
+This project is part of my frontend assignment.  
+I have created two reusable components using **React**, **TypeScript**, **TailwindCSS**, and **Storybook**.
 
 ### Components
 
-1. **InputField**
+#### 1. InputField
 
-   - Variants: filled, outlined, ghost
-   - Sizes: sm, md, lg
-   - States: disabled, invalid, loading
-   - Features: label, helper text, error message, clear button, password toggle
+- Supports different variants (filled, outlined, ghost)
+- Different sizes (small, medium, large)
+- Handles states like disabled, invalid, loading
+- Extra features like label, helper text, error message, clear button and password toggle
 
-2. **DataTable**
-   - Display tabular data
-   - Sorting by column
-   - Row selection (single/multiple)
-   - Loading & empty states
+#### 2. DataTable
+
+- Shows tabular data in rows/columns
+- Sorting by columns
+- Row selection (single / multiple)
+- Loading and empty state handling
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - React + TypeScript
 - TailwindCSS
@@ -29,7 +31,9 @@ This project contains two reusable React components built with **React, TypeScri
 
 ---
 
-## 📦 Installation
+## Installation
+
+Clone the repo and install dependencies:
 
 ```bash
 git clone <your-repo-url>

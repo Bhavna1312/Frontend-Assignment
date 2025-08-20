@@ -1,96 +1,63 @@
 import React, { useState } from "react";
 
-export interface InputFieldProps {
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+interface InputFieldProps {
   label?: string;
   placeholder?: string;
   helperText?: string;
   errorMessage?: string;
+  type?: string;
   disabled?: boolean;
   invalid?: boolean;
   loading?: boolean;
-  variant?: "filled" | "outlined" | "ghost";
-  size?: "sm" | "md" | "lg";
-  type?: "text" | "password";
   clearable?: boolean;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
-  value,
-  onChange,
   label,
   placeholder,
   helperText,
   errorMessage,
-  disabled,
-  invalid,
-  loading,
-  variant = "outlined",
-  size = "md",
   type = "text",
+  disabled = false,
+  invalid = false,
+  loading = false,
   clearable = false,
 }) => {
-  const [inputValue, setInputValue] = useState(value || "");
+  const [value, setValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const sizeClasses = {
-    sm: "px-2 py-1 text-sm",
-    md: "px-3 py-2 text-base",
-    lg: "px-4 py-3 text-lg",
-  };
-
-  const variantClasses = {
-    filled:
-      "bg-gray-100 border border-gray-300 focus:ring-2 focus:ring-blue-500",
-    outlined:
-      "border border-gray-400 focus:ring-2 focus:ring-blue-500",
-    ghost:
-      "border-b border-gray-400 focus:border-blue-500 rounded-none",
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-    onChange?.(e);
-  };
+  const inputType = type === "password" && showPassword ? "text" : type;
 
   return (
     <div className="flex flex-col gap-1 w-full max-w-sm">
-      {label && <label className="text-sm font-medium">{label}</label>}
-
+      {label && <label className="text-sm font-medium text-gray-700">{label}</label>}
+      
       <div className="relative">
         <input
-          type={type === "password" && !showPassword ? "password" : "text"}
-          value={inputValue}
-          onChange={handleChange}
+          type={inputType}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
           placeholder={placeholder}
           disabled={disabled || loading}
-          aria-invalid={invalid}
-          aria-label={label}
-          className={`
-            w-full rounded-md focus:outline-none
-            ${sizeClasses[size]} 
-            ${variantClasses[variant]} 
-            ${invalid ? "border-red-500 focus:ring-red-500" : ""}
-            ${disabled ? "bg-gray-200 cursor-not-allowed" : ""}
-            ${loading ? "pr-8" : ""}
+          className={`w-full rounded-md border px-3 py-2 pr-10 text-sm shadow-sm focus:outline-none
+            ${invalid ? "border-red-500 focus:ring-2 focus:ring-red-400" : "border-gray-300 focus:ring-2 focus:ring-blue-400"}
+            ${disabled ? "bg-gray-100 cursor-not-allowed text-gray-400" : "bg-white"}
           `}
         />
 
         {/* Loading spinner */}
         {loading && (
-          <div className="absolute right-2 top-1/2 -translate-y-1/2">
-            <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="absolute inset-y-0 right-3 flex items-center">
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-blue-500"></div>
           </div>
         )}
 
         {/* Clear button */}
-        {clearable && inputValue && !disabled && !loading && (
+        {clearable && value && !loading && (
           <button
             type="button"
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black"
-            onClick={() => setInputValue("")}
-            aria-label="Clear input"
+            className="absolute inset-y-0 right-3 text-gray-400 hover:text-gray-600"
+            onClick={() => setValue("")}
           >
             ✕
           </button>
@@ -100,21 +67,17 @@ const InputField: React.FC<InputFieldProps> = ({
         {type === "password" && !loading && (
           <button
             type="button"
-            className="absolute right-8 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black"
+            className="absolute inset-y-0 right-3 text-gray-400 hover:text-gray-600 text-xs"
             onClick={() => setShowPassword(!showPassword)}
-            aria-label="Toggle password visibility"
           >
-            {showPassword ? "🙈" : "👁️"}
+            {showPassword ? "Hide" : "Show"}
           </button>
         )}
       </div>
 
-      {helperText && !invalid && (
-        <span className="text-xs text-gray-500">{helperText}</span>
-      )}
-      {invalid && errorMessage && (
-        <span className="text-xs text-red-500">{errorMessage}</span>
-      )}
+      {/* Helper / error text */}
+      {invalid && errorMessage && <p className="text-xs text-red-500">{errorMessage}</p>}
+      {!invalid && helperText && <p className="text-xs text-gray-500">{helperText}</p>}
     </div>
   );
 };
