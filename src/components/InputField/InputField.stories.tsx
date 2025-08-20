@@ -1,65 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import InputField from "./InputField";
+import DataTable from "./DataTable";
 
-const meta: Meta<typeof InputField> = {
-  title: "Components/InputField",
-  component: InputField,
+const meta: Meta<typeof DataTable> = {
+  title: "Components/DataTable",
+  component: DataTable,
 };
 export default meta;
-type Story = StoryObj<typeof InputField>;
+
+type Story = StoryObj<typeof DataTable>;
 
 export const Default: Story = {
   args: {
-    label: "Name",
-    placeholder: "Enter your name",
-  },
-};
-
-export const WithHelperText: Story = {
-  args: {
-    label: "Username",
-    placeholder: "Enter username",
-    helperText: "Must be at least 6 characters",
-  },
-};
-
-export const Error: Story = {
-  args: {
-    label: "Email",
-    placeholder: "Enter email",
-    invalid: true,
-    errorMessage: "Invalid email address",
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    label: "Password",
-    placeholder: "Enter password",
-    disabled: true,
-  },
-};
-
-export const Loading: Story = {
-  args: {
-    label: "Search",
-    placeholder: "Searching...",
-    loading: true,
-  },
-};
-
-export const PasswordToggle: Story = {
-  args: {
-    label: "Password",
-    placeholder: "Enter password",
-    type: "password",
-  },
-};
-
-export const Clearable: Story = {
-  args: {
-    label: "Search",
-    placeholder: "Type something...",
-    clearable: true,
+    columns: [
+      { header: "Name", accessor: "name" },
+      { header: "Age", accessor: "age" },
+      { header: "Email", accessor: "email" },
+    ],
+    data: [
+      { name: "John Doe", age: 28, email: "john@example.com" },
+      { name: "Jane Smith", age: 34, email: "jane@example.com" },
+      { name: "Sam Green", age: 45, email: "sam@example.com" },
+    ],
   },
 };

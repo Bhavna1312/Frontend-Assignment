@@ -1,57 +1,26 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import DataTable, { type Column } from "./DataTable";
+import DataTable from "./DataTable";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
-const columns: Column<User>[] = [
-  { key: "id", title: "ID", dataIndex: "id", sortable: true },
-  { key: "name", title: "Name", dataIndex: "name", sortable: true },
-  { key: "email", title: "Email", dataIndex: "email" },
-];
-
-const data: User[] = [
-  { id: 1, name: "Bhavna", email: "bhavna@example.com" },
-  { id: 2, name: "Raj", email: "raj@example.com" },
-  { id: 3, name: "Anita", email: "anita@example.com" },
-];
-
-const meta: Meta<typeof DataTable<User>> = {
+const meta: Meta<typeof DataTable> = {
   title: "Components/DataTable",
-  component: DataTable<User>,
+  component: DataTable,
+  tags: ["autodocs"],   // <-- fixes Storybook context issue
 };
+
 export default meta;
-type Story = StoryObj<typeof DataTable<User>>;
 
-export const Default: Story = {
-  args: {
-    data,
-    columns,
-  },
-};
+type Story = StoryObj<typeof DataTable>;
 
-export const Selectable: Story = {
+export const Basic: Story = {
   args: {
-    data,
-    columns,
-    selectable: true,
-  },
-};
-
-export const Loading: Story = {
-  args: {
-    data: [],
-    columns,
-    loading: true,
-  },
-};
-
-export const Empty: Story = {
-  args: {
-    data: [],
-    columns,
+    columns: [
+      { key: "name", title: "Name" },
+      { key: "age", title: "Age" },
+      { key: "email", title: "Email" },
+    ],
+    data: [
+      { name: "Bhavna", age: 22, email: "bhavna@example.com" },
+      { name: "Raj", age: 25, email: "raj@example.com" },
+    ],
   },
 };
