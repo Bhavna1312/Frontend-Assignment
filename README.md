@@ -39,6 +39,12 @@ Clone the repo and install dependencies:
 git clone <your-repo-url>
 cd frontend-assignment
 npm install
+
+Run locally:
+npm run dev
+
+Run Storybook:
+npm run storybook
 ```
 
 ## Deployment Links
