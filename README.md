@@ -4,6 +4,7 @@
 
 This project is part of my frontend assignment.  
 I have created two reusable components using **React**, **TypeScript**, **TailwindCSS**, and **Storybook**.
+Both components also support **light/dark mode**.
 
 ### Components
 
@@ -27,7 +28,7 @@ I have created two reusable components using **React**, **TypeScript**, **Tailwi
 
 - React + TypeScript
 - TailwindCSS
-- Storybook
+- Storybook (Chromatic)
 
 ---
 
@@ -54,13 +55,12 @@ https://68a61526433f65ca5e31b5a2-pnfmttgunm.chromatic.com/
 
 ## Screenshots
 
-### InputField
+### InputField (Light + Dark)
 
 ![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
+![alt text](image-5.png)
 
-### DataTable
+### DataTable (Light + Dark)
 
 ![alt text](image-3.png)
-![alt text](image-4.png)
+![alt text](image-2.png)
